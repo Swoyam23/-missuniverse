@@ -5,6 +5,8 @@ const message = document.getElementById('message');
 let playerPosition = 175;
 let heartsCaught = 0;
 
+document.getElementById("start-btn").style.display = "block"; // Show button
+
 // Move the player left and right
 document.getElementById("start-btn").addEventListener("click", function() {
     startGame();
