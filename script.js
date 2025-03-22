@@ -15,6 +15,14 @@ document.addEventListener('keydown', (event) => {
     player.style.left = playerPosition + 'px';
 });
 
+function startGame() {
+    let music = document.getElementById("music.mp3");
+
+    if (music.paused) {
+        music.play().catch(error => console.log("Autoplay blocked:", error));
+    }
+}
+
 // Function to create falling hearts
 function createHeart() {
     const heart = document.createElement('div');
