@@ -6,6 +6,9 @@ let playerPosition = 175;
 let heartsCaught = 0;
 
 // Move the player left and right
+document.getElementById("start-btn").addEventListener("click", function() {
+    startGame();
+    document.getElementById("bg-music").play(); // Ensure music starts
 document.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowLeft' && playerPosition > 0) {
         playerPosition -= 20;
@@ -49,6 +52,22 @@ function createHeart() {
             updateMessage();
         }
     }, 50);
+}
+
+function collectSnitch() {
+    let catchSound = document.getElementById("catch.mp3");
+
+    // Play catch sound
+    if (catchSound) {
+        catchSound.currentTime = 0; // Restart sound in case it overlaps
+        catchSound.play().catch(error => console.log("Sound blocked:", error));
+    }
+
+    snitchCount++;
+
+    if (snitchCount >= 10) {
+        endGame(); // Stop game after 10 snitches
+    }
 }
 
 // Update message when enough hearts are caught
