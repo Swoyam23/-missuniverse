@@ -50,5 +50,34 @@ function updateMessage() {
     }
 }
 
+function endGame() {
+    // Stop all game actions
+    document.getElementById("snitch").style.display = "none"; // Hide Snitches
+    document.getElementById("harry").style.display = "none"; // Hide character
+
+    // Display message
+    let message = document.createElement("div");
+    message.innerHTML = "You caught 10 Snitches! Well done!";
+    message.style.position = "absolute";
+    message.style.top = "50%";
+    message.style.left = "50%";
+    message.style.transform = "translate(-50%, -50%)";
+    message.style.fontSize = "24px";
+    message.style.fontFamily = "Harry Potter Font";
+    message.style.color = "#FFD700"; // Golden color like Snitch
+    message.style.background = "rgba(0, 0, 0, 0.8)";
+    message.style.padding = "20px";
+    message.style.borderRadius = "10px";
+
+    document.body.appendChild(message);
+
+    // Optional: Stop background music
+    let music = document.getElementById("bg-music");
+    if (music) {
+        music.pause();
+        music.currentTime = 0; // Reset music
+    }
+}
+
 // Generate hearts at intervals
 setInterval(createHeart, 1000);
